@@ -31,18 +31,20 @@ class CommentsController < ApplicationController
   end
 
   def update
+    @post = @comment.post
     if @comment.update(comment_params)
       flash[:notice] ="Comment was successfully updated."
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render 'edit'
     end
   end
 
   def destroy
+    @post = @comment.post
     @comment.destroy
     flash[:notice] ="Comment was successfully deleted."
-    redirect_to posts_path
+    redirect_to post_path(@post)
   end
 
   private
