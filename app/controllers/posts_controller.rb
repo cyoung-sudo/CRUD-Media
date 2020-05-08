@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     @post = Post.new(post_params)
     @post.user = current_user
     if @post.save
+      flash[:notice] ="Post was successfully created."
       redirect_to posts_path
     else
       render 'new'
@@ -25,6 +26,7 @@ class PostsController < ApplicationController
 
   def update
     if @post.update(post_params)
+      flash[:notice] ="Post was successfully updated."
       redirect_to posts_path
     else
       render 'edit'
@@ -33,6 +35,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post.destroy
+    flash[:notice] ="Post was successfully deleted."
     redirect_to posts_path
   end
 
@@ -47,6 +50,7 @@ class PostsController < ApplicationController
 
     def require_same_user
       if current_user != @post.user
+        flash[:alert] ="You don't have permission to access this page."
         redirect_to root_path
       end
     end

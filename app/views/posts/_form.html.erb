@@ -1,4 +1,6 @@
-<%= form_with model: @post, class: "nifty_form" do |f| %>
+<%= render 'shared/errors', obj: @post %>
+
+<%= form_for @post do |f| %>
   <div>
     <%= f.label :title %>
     <%= f.text_field :title %>
