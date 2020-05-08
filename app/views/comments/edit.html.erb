@@ -1,0 +1,11 @@
+<%= render 'shared/errors', obj: @comment %>
+
+<%= form_for @comment do |f| %>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

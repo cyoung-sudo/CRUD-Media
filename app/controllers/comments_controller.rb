@@ -20,6 +20,31 @@ class CommentsController < ApplicationController
     end
   end
 
+  def show
+    redirect_to posts_path
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      flash[:notice] ="Comment was successfully updated."
+      redirect_to posts_path
+    else
+      render 'edit'
+    end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+    flash[:notice] ="Comment was successfully deleted."
+    redirect_to posts_path
+  end
+
   private
     def comment_params
       params.require(:comment).permit(:content)
