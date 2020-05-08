@@ -1,4 +1,7 @@
 class CommentsController < ApplicationController
+  before_action :set_comment, only: [:edit, :update, :destroy]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
+
   def index
     redirect_to posts_path
   end
@@ -25,11 +28,9 @@ class CommentsController < ApplicationController
   end
 
   def edit
-    @comment = Comment.find(params[:id])
   end
 
   def update
-    @comment = Comment.find(params[:id])
     if @comment.update(comment_params)
       flash[:notice] ="Comment was successfully updated."
       redirect_to posts_path
@@ -39,7 +40,6 @@ class CommentsController < ApplicationController
   end
 
   def destroy
-    @comment = Comment.find(params[:id])
     @comment.destroy
     flash[:notice] ="Comment was successfully deleted."
     redirect_to posts_path
@@ -48,5 +48,16 @@ class CommentsController < ApplicationController
   private
     def comment_params
       params.require(:comment).permit(:content)
+    end
+
+    def set_comment
+      @comment = Comment.find(params[:id])
+    end
+
+    def require_same_user
+      if current_user != @comment.user
+        flash[:alert] ="You don't have permission to access this page."
+        redirect_to root_path
+      end
     end
 end
