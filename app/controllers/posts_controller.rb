@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy]
   before_action :require_same_user, only: [:edit, :update, :destroy]
 
   def index
@@ -15,10 +15,13 @@ class PostsController < ApplicationController
     @post.user = current_user
     if @post.save
       flash[:notice] ="Post was successfully created."
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render 'new'
     end
+  end
+
+  def show
   end
 
   def edit
@@ -27,7 +30,7 @@ class PostsController < ApplicationController
   def update
     if @post.update(post_params)
       flash[:notice] ="Post was successfully updated."
-      redirect_to posts_path
+      redirect_to post_path(@post)
     else
       render 'edit'
     end
