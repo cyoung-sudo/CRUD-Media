@@ -42,6 +42,10 @@ class PostsController < ApplicationController
     redirect_to posts_path
   end
 
+  def feed
+    @posts = Post.all
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :description)

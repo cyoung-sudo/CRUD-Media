@@ -1,0 +1,17 @@
+<h1>Feed</h1>
+<ul>
+  <hr>
+  <% @posts.each do |post| %>
+    <% if current_user.followings.include?(post.user) %>
+      <li><strong><%= post.title %></strong></li>
+      <li><%= post.description %></li>
+      <li><%= post.user.email %></li>
+      <%= link_to "View", post_path(post) %>
+      <% if current_user == post.user %>
+        <%= link_to "Edit", edit_post_path(post) %>
+        <%= link_to 'Delete', post_path(post), method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
+      <% end %>
+      <hr>
+    <% end %>
+  <% end %>
+</ul>

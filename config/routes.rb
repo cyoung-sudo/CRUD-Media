@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'users_show', to: 'users#show'
 
   resources :posts
+  get 'feed', to: 'posts#feed'
 
   resources :comments
 
