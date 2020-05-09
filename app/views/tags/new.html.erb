@@ -1,0 +1,11 @@
+<%= render 'shared/errors', obj: @tag %>
+
+<%= form_for(@tag, url: tags_path(:post_id => params[:post_id])) do |f| %>
+  <div>
+    <%= f.label :content %>
+    <%= f.text_field :content %>
+  </div>
+  <div>
+    <%= f.submit %>
+  </div>
+<% end %>

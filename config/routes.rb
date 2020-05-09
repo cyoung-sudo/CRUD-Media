@@ -14,4 +14,6 @@ Rails.application.routes.draw do
 
   post '/users/:id/follow', to: 'follows#follow', as: 'follow_user'
   post '/users/:id/unfollow', to: 'follows#unfollow', as: 'unfollow_user'
+
+  resources :tags
 end 
