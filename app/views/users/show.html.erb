@@ -1,6 +1,9 @@
 <h1>Profile</h1>
 <p>Email: <%= @user.email %></p>
 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
+<p>Followers: <%= @user.followers.count %></p>
+<%= link_to "Follow", follow_user_path(@user), method: :post %>
+<%= link_to "Unfollow", unfollow_user_path(@user), method: :post %>
 
 <h2>Posts</h2>
 <ul>
