@@ -6,6 +6,14 @@
   <%= link_to 'Delete', post_path(@post), method: :delete, data: {confirm: "Are you sure you want to delete this post?"} %>
 <% end %>
 
+<h2>Likes</h2>
+<p><%= @post.likes.count %></p>
+<% if current_user.liked.include?(@post) %>
+  <%= link_to "Unlike", unlike_post_path(@post), method: :post %>
+<% else %>
+  <%= link_to "Like", like_post_path(@post), method: :post %>
+<% end %>
+
 <h2>Tags</h2>
 <% if current_user == @post.user %>
   <%= link_to "Add Tag", new_tag_path(:post_id => @post) %>

@@ -16,4 +16,7 @@ Rails.application.routes.draw do
   post '/users/:id/unfollow', to: 'follows#unfollow', as: 'unfollow_user'
 
   resources :tags
+
+  post '/posts/:id/like', to: 'likes#like', as: 'like_post'
+  post '/posts/:id/unlike', to: 'likes#unlike', as: 'unlike_post'
 end 

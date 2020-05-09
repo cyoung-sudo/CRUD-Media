@@ -6,5 +6,6 @@ class Post < ApplicationRecord
   belongs_to :user
   has_many :comments, dependent: :destroy
   has_many :tags, dependent: :destroy
-  has_many :likes, dependent: :destroy
+  has_many :received_likes, foreign_key: :post_id, class_name: "Like"
+  has_many :likes, through: :received_likes, source: :user, dependent: :destroy
 end
