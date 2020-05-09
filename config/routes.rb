@@ -4,8 +4,8 @@ Rails.application.routes.draw do
   root 'pages#home'
   get 'about', to: 'pages#about'
 
-  get 'users_index', to: 'users#index'
-  get 'users_show', to: 'users#show'
+  get 'users', to: 'users#index'
+  get 'user/:id', to: 'users#show', as: 'user'
 
   resources :posts
   get 'feed', to: 'posts#feed'
