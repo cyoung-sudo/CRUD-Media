@@ -1,4 +1,5 @@
 <h1>Profile</h1>
+<%= image_tag @user.avatar.url(:medium) %>
 <p>Email: <%= @user.email %></p>
 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
 <p>Followers: <%= @user.followers.count %></p>
