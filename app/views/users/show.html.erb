@@ -2,8 +2,11 @@
 <p>Email: <%= @user.email %></p>
 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
 <p>Followers: <%= @user.followers.count %></p>
-<%= link_to "Follow", follow_user_path(@user), method: :post %>
-<%= link_to "Unfollow", unfollow_user_path(@user), method: :post %>
+<% if current_user.followings.include?(@user) %>
+  <%= link_to "Unfollow", unfollow_user_path(@user), method: :post %>
+<% else %>
+  <%= link_to "Follow", follow_user_path(@user), method: :post %>
+<% end %>
 
 <h2>Posts</h2>
 <ul>
