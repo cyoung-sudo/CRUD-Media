@@ -15,6 +15,6 @@ class User < ApplicationRecord
   has_many :followings, through: :given_follows, source: :followee, dependent: :destroy
   has_many :given_likes, foreign_key: :user_id, class_name: "Like"
   has_many :liked, through: :given_likes, source: :post, dependent: :destroy
-  has_attached_file :avatar, styles: { medium: "300x300#" }, default_url: "/images/:style/missing.png"
+  has_attached_file :avatar, styles: { medium: "300x300#" }, default_url: "/assets/missing.png"
   validates_attachment_content_type :avatar, content_type: /\Aimage\/.*\z/
 end
