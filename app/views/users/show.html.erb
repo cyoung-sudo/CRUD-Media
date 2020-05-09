@@ -1,5 +1,9 @@
 <h1>Profile</h1>
-<%= image_tag @user.avatar.url(:medium) %>
+<% if @user.avatar.url == "/assets/missing.png" %>
+  <%= image_tag ("missing.png") %>
+<% else %>
+  <%= image_tag @user.avatar.url(:medium) %>
+<% end %>
 <p>Email: <%= @user.email %></p>
 <p>Name: <%= @user.first_name %> <%= @user.last_name %></p>
 <p>Followers: <%= @user.followers.count %></p>
