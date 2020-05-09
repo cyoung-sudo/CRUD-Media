@@ -7,10 +7,14 @@
 <% end %>
 
 <h2>Tags</h2>
-<%= link_to "Add Tag", new_tag_path(:post_id => @post) %>
+<% if current_user == @post.user %>
+  <%= link_to "Add Tag", new_tag_path(:post_id => @post) %>
+<% end %>
 <% @post.tags.each do |tag| %>
   <span><%= tag.content %></span>
-  <%= link_to 'Delete', tag_path(tag), method: :delete, data: {confirm: "Are you sure you want to delete this tag?"} %>
+  <% if current_user == @post.user %>
+    <%= link_to 'Delete', tag_path(tag), method: :delete, data: {confirm: "Are you sure you want to delete this tag?"} %>
+  <% end %>
 <% end %>
 
 <h2>Comments</h2>
