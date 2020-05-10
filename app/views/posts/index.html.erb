@@ -1,11 +1,26 @@
-<h1>Posts</h1>
-<ul>
-  <hr>
-  <% @posts.each do |post| %>
-    <li><strong><%= post.title %></strong></li>
-    <li><%= post.description %></li>
-    <li><%= post.user.email %></li>
-    <%= link_to "View", post_path(post) %>
-    <hr>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-12">
+      <h1>Posts</h1>
+      <ul>
+        <hr>
+        <% @posts.each do |post| %>
+          <li><strong><%= post.title %></strong></li>
+          <li><%= post.description %></li>
+          <li><%= post.user.email %></li>
+          <%= link_to "View", post_path(post) %>
+          <hr>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4 col-12">
+      <h1>Most Liked</h1>
+      <hr>
+      <li><strong><%= @most_liked.title %></strong></li>
+      <li><%= @most_liked.description %></li>
+      <li><%= @most_liked.user.email %></li>
+      <%= link_to "View", post_path(@most_liked) %>
+      <hr>
+    </div>
+  </div>
+</div>

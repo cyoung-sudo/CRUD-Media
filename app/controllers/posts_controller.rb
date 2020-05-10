@@ -4,6 +4,10 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
+    # @most_liked = Post.first
+    most_liked_id = Like.group('post_id').order('COUNT(*) DESC').select('post_id').limit(1).first
+    puts "__________________#{most_liked_id.post_id}__________________"
+    @most_liked = Post.find(most_liked_id.post_id)
   end
 
   def new
