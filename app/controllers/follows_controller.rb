@@ -6,7 +6,7 @@ class FollowsController < ApplicationController
       flash[:notice] ="Successfully followed #{@user.first_name} #{@user.last_name}."
       redirect_to user_path(@user)
     else
-      flash[:notice] ="You are already following #{@user.first_name} #{@user.last_name}."
+      flash[:alert] ="You are already following #{@user.first_name} #{@user.last_name}."
       redirect_to user_path(@user)
     end
   end
@@ -18,7 +18,7 @@ class FollowsController < ApplicationController
       flash[:notice] ="Successfully unfollowed #{@user.first_name} #{@user.last_name}."
       redirect_to user_path(@user)
     else
-      flash[:notice] ="You aren't following #{@user.first_name} #{@user.last_name}."
+      flash[:alert] ="You aren't following #{@user.first_name} #{@user.last_name}."
       redirect_to user_path(@user)
     end
   end

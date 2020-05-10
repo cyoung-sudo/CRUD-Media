@@ -6,7 +6,7 @@ class LikesController < ApplicationController
       flash[:notice] ="Successfully liked post."
       redirect_to post_path(@post)
     else
-      flash[:notice] ="You already liked post."
+      flash[:alert] ="You already liked post."
       redirect_to post_path(@post)
     end
   end
@@ -18,7 +18,7 @@ class LikesController < ApplicationController
       flash[:notice] ="Successfully unliked post."
       redirect_to post_path(@post)
     else
-      flash[:notice] ="You haven't liked the post."
+      flash[:alert] ="You haven't liked the post."
       redirect_to post_path(@post)
     end
   end
