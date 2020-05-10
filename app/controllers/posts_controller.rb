@@ -5,8 +5,12 @@ class PostsController < ApplicationController
 
   def index
     @posts = Post.all
-    most_liked_id = Like.group('post_id').order('COUNT(*) DESC').select('post_id').limit(1).first
-    @most_liked = Post.find(most_liked_id.post_id)
+    if Like.count > 0
+      most_liked_id = Like.group('post_id').order('COUNT(*) DESC').select('post_id').limit(1).first
+      @most_liked = Post.find(most_liked_id.post_id)
+    else
+      @most_liked = Post.first
+    end
   end
 
   def new
