@@ -4,19 +4,19 @@
       <h1>Feed</h1>
       <% if current_user.followings.count > 0 %>
         <% temp = false %>
-        <ul>
-          <hr>
-          <% @posts.each do |post| %>
-            <% if current_user.followings.include?(post.user) %>
-              <% temp = true %>
-              <li><strong><%= post.title %></strong></li>
-              <li><%= post.description %></li>
-              <li><%= post.user.email %></li>
-              <%= link_to "View", post_path(post) %>
-              <hr>
-            <% end %>
+        <% @posts.each do |post| %>
+          <% if current_user.followings.include?(post.user) %>
+            <% temp = true %>
+            <div class="card">
+              <div class="card-body">
+                <strong><%= link_to post.title, post_path(post) %></strong>
+                <p><%= time_ago_in_words(post.created_at) %></p>
+                <p><%= post.description %></p>
+                Created by: <%= link_to post.user.email, user_path(post.user) %>
+              </div>
+            </div>
           <% end %>
-        </ul>
+        <% end %>
         <% if temp == false %>
           <p>The users your following haven't made any posts</p>
         <% end %>
