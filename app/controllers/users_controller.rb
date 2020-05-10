@@ -3,6 +3,12 @@ class UsersController < ApplicationController
 
   def index
     @users = User.all
+    if Follow.count > 0
+      most_followed_id = Follow.group('followee_id').order('COUNT(*) DESC').select('followee_id').limit(1).first
+      @most_followed = User.find(most_followed_id.followee_id)
+    else
+      @most_followed = User.first
+    end
   end
 
   def show

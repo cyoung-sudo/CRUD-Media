@@ -1,7 +1,24 @@
-<h1>Users</h1>
-<ul>
-  <% @users.each do |user| %>
-    <li><%= user.email %></li>
-    <li><%= link_to "Profile", user_path(user) %></li>
-  <% end %>
-</ul>
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-12">
+      <h1>Users</h1>
+      <hr>
+      <ul>
+        <% @users.each do |user| %>
+          <li><%= user.first_name %> <%= user.last_name %></li>
+          <li><%= user.email %></li>
+          <li><%= link_to "Profile", user_path(user) %></li>
+          <hr>
+        <% end %>
+      </ul>
+    </div>
+    <div class="col-md-4 col-12">
+      <h1>Most Followed</h1>
+      <hr>
+      <li><%= @most_followed.first_name %> <%= @most_followed.last_name %></li>
+      <li><%= @most_followed.email %></li>
+      <li><%= link_to "Profile", user_path(@most_followed) %></li>
+      <hr>
+    </div>
+  </div>
+</div>
