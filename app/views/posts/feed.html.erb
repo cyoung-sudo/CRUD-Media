@@ -7,21 +7,21 @@
           <% @posts.each do |post| %>
             <% if current_user.followings.include?(post.user) %>
               <% temp = true %>
-              <div class="posts shadow-lg">
-                <div class="row post-header">
+              <div class="sections shadow-lg">
+                <div class="row section-header">
                   <div class="col-xs-4">
                     <%= link_to image_tag(post.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(post.user) %>
                   </div>
-                  <div class="col-xs-4 post-info">
+                  <div class="col-xs-4 section-info">
                     <div><strong><%= link_to post.user.full_name, user_path(post.user) %></strong></div>
                     <div><%= time_ago_in_words(post.created_at) %> ago * <i class="fa fa-globe"></i></div>
                   </div>
                 </div>
                 <h4><%= link_to post.title, post_path(post) %></h4>
-                <div class="post-body"><%= post.description %></div>
+                <div class="custom-spacing"><%= post.description %></div>
                 <hr>
-                <div class="post-author"><%= post.likes.count %> likes</div>
-                <span class="post-actions">
+                <div class="custom-spacing"><%= post.likes.count %> likes</div>
+                <span class="section-actions">
                 <% if current_user.liked.include?(post) %>
                   <%= link_to '<i class="fa fa-thumbs-up"></i> Unlike'.html_safe, unlike_post_path(post), method: :post %>
                 <% else %>
@@ -33,13 +33,14 @@
             <% end %>
           <% end %>
           <% if temp == false %>
-            <div class="posts shadow-lg">
-              The users your following haven't made any posts
+            <div class="sections shadow-lg">
+              The users you've followed haven't made any posts...
             </div>
           <% end %>
+
         <% else %>
-          <div class="posts shadow-lg">
-            You aren't following anyone
+          <div class="sections shadow-lg">
+            You aren't following anyone...
           </div>
         <% end %>
       </div>

@@ -2,11 +2,11 @@
   <div class="row">
     <div class="col-md-4 col-12">
       <div class="header shadow-lg"><h2 class="text-center"><%= @user.full_name %></h2>
-        <div class="row justify-content-center user-spacing"><%= image_tag @user.avatar.url(:medium), class: "img-fluid img-thumbnail" %></div>
-        <div class="user-spacing"><i class="fa fa-envelope"></i> <%= @user.email %></div>
-        <div class="user-spacing">Joined <%= time_ago_in_words(@user.created_at) %> ago</div>
+        <div class="row justify-content-center custom-spacing"><%= image_tag @user.avatar.url(:medium), class: "img-fluid img-thumbnail" %></div>
+        <div class="custom-spacing"><i class="fa fa-envelope"></i> <%= @user.email %></div>
+        <div class="custom-spacing">Joined <%= time_ago_in_words(@user.created_at) %> ago</div>
         <hr>
-        <div class="user-spacing"><%= @user.followers.count %> followers</div>
+        <div class="custom-spacing"><%= @user.followers.count %> followers</div>
         <% if current_user != @user %>
           <% if current_user.followings.include?(@user) %>
             <%= link_to '<i class="fa fa-user-times"></i> Unfollow'.html_safe, unfollow_user_path(@user), method: :post %>

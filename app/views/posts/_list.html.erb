@@ -1,20 +1,21 @@
 <% obj.each do |post| %>
-  <div class="posts shadow-lg">
-    <div class="row post-header">
+  <div class="sections shadow-lg">
+    <div class="row section-header">
       <div class="col-xs-4">
         <%= link_to image_tag(post.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(post.user) %>
       </div>
-      <div class="col-xs-4 post-info">
+      <div class="col-xs-4 section-info">
         <div><strong><%= link_to post.user.full_name, user_path(post.user) %></strong></div>
         <div><%= time_ago_in_words(post.created_at) %> ago * <i class="fa fa-globe"></i></div>
       </div>
     </div>
+
     <div><h4><%= link_to post.title, post_path(post) %></h4></div>
-    <div class="post-body"><%= post.description %></div>
+    <div class="custom-spacing"><%= post.description %></div>
     <hr>
-    <div class="post-author"><%= post.likes.count %> likes</div>
+    <div class="custom-spacing"><%= post.likes.count %> likes</div>
     <% if user_signed_in? %>
-      <span class="post-actions">
+      <span class="section-actions">
         <% if current_user.liked.include?(post) %>
           <%= link_to '<i class="fa fa-thumbs-up"></i> Unlike'.html_safe, unlike_post_path(post), method: :post %>
         <% else %>
