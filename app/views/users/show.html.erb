@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row">
     <div class="col-md-4 col-12">
-      <div class="header shadow-lg"><h1 class="text-center"><%= @user.full_name %></h1>
+      <div class="header shadow-lg"><h2 class="text-center"><%= @user.full_name %></h2>
         <%= image_tag @user.avatar.url(:medium), class: "img-fluid img-thumbnail" %>
         <p>Email: <%= @user.email %></p>
         <p>Followers: <%= @user.followers.count %></p>
