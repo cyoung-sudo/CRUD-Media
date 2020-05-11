@@ -1,26 +1,58 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-12">
-      <h1>Posts</h1>
-      <ul>
-        <hr>
+      <div class="header shadow-lg"><h1 class="text-center">Posts</h1>
         <% @posts.each do |post| %>
-          <li><strong><%= post.title %></strong></li>
-          <li><%= post.description %></li>
-          <li><%= post.user.email %></li>
-          <%= link_to "View", post_path(post) %>
-          <hr>
+          <div class="posts shadow-lg">
+            <div class="row post-header">
+              <div class="col-xs-4">
+                <%= link_to image_tag(post.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(post.user) %>
+              </div>
+              <div class="col-xs-4 post-info">
+                <strong><%= link_to post.title, post_path(post) %></strong>
+                <p><%= time_ago_in_words(post.created_at) %> ago</p>
+              </div>
+            </div>
+            <div class="post-body"><%= post.description %></div>
+            <div class="post-author">Created by: <%= link_to post.user.email, user_path(post.user) %></div>
+            <span class="post-actions">
+              <% if current_user.liked.include?(post) %>
+                <%= link_to "Unlike", unlike_post_path(post), method: :post %>
+              <% else %>
+                <%= link_to "Like", like_post_path(post), method: :post %>
+              <% end %>
+            </span>
+            <span><%= link_to "Comment", new_comment_path(:post_id => post) %></span>
+          </div>
         <% end %>
-      </ul>
+      </div>
     </div>
     <div class="col-md-4 col-12">
-      <h1>Most Liked</h1>
-      <hr>
-      <li><strong><%= @most_liked.title %></strong></li>
-      <li><%= @most_liked.description %></li>
-      <li><%= @most_liked.user.email %></li>
-      <%= link_to "View", post_path(@most_liked) %>
-      <hr>
+      <div class="header shadow-lg"><h2 class="text-center">Most Liked</h2>
+        <div class="posts shadow-lg">
+          <div class="row post-header">
+            <div class="col-xs-4">
+              <%= link_to image_tag(@most_liked.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(@most_liked.user) %>
+            </div>
+            <div class="col-xs-4 post-info">
+              <strong><%= link_to @most_liked.title, post_path(@most_liked) %></strong>
+              <p><%= time_ago_in_words(@most_liked.created_at) %> ago</p>
+            </div>
+          </div>
+          <div class="post-body"><%= @most_liked.description %></div>
+          <div class="post-author">Created by: <%= link_to @most_liked.user.email, user_path(@most_liked.user) %></div>
+
+          <span class="post-actions">
+            <% if current_user.liked.include?(@most_liked) %>
+              <%= link_to "Unlike", unlike_post_path(@most_liked), method: :post %>
+            <% else %>
+              <%= link_to "Like", like_post_path(@most_liked), method: :post %>
+            <% end %>
+          </span>
+          <span><%= link_to "Comment", new_comment_path(:post_id => @most_liked) %></span>
+
+        </div>
+      </div>
     </div>
   </div>
 </div>
