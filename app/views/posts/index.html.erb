@@ -10,20 +10,21 @@
               </div>
               <div class="col-xs-4 post-info">
                 <strong><%= link_to post.title, post_path(post) %></strong>
-                <p><%= time_ago_in_words(post.created_at) %> ago</p>
+                <p><%= time_ago_in_words(post.created_at) %> ago * <i class="fa fa-globe"></i></p>
               </div>
             </div>
             <div class="post-body"><%= post.description %></div>
-            <div class="post-author">Created by: <%= link_to post.user.email, user_path(post.user) %></div>
+            <div class="post-author">Created by: <%= link_to post.user.full_name, user_path(post.user) %></div>
+            <div class="post-author"><%= post.likes.count %> likes</div>
             <% if user_signed_in? %>
               <span class="post-actions">
                 <% if current_user.liked.include?(post) %>
-                  <%= link_to "Unlike", unlike_post_path(post), method: :post %>
+                  <%= link_to '<i class="fa fa-thumbs-down"></i> Unlike'.html_safe, unlike_post_path(post), method: :post %>
                 <% else %>
-                  <%= link_to "Like", like_post_path(post), method: :post %>
+                  <%= link_to '<i class="fa fa-thumbs-up"></i> Like'.html_safe, like_post_path(post), method: :post %>
                 <% end %>
               </span>
-              <span><%= link_to "Comment", new_comment_path(:post_id => post) %></span>
+              <span><%= link_to '<i class="fa fa-comment"></i> Comment'.html_safe, new_comment_path(:post_id => post) %></span>
             <% end %>
           </div>
         <% end %>
@@ -38,20 +39,21 @@
             </div>
             <div class="col-xs-4 post-info">
               <strong><%= link_to @most_liked.title, post_path(@most_liked) %></strong>
-              <p><%= time_ago_in_words(@most_liked.created_at) %> ago</p>
+              <p><%= time_ago_in_words(@most_liked.created_at) %> ago * <i class="fa fa-globe"></i></p>
             </div>
           </div>
           <div class="post-body"><%= @most_liked.description %></div>
-          <div class="post-author">Created by: <%= link_to @most_liked.user.email, user_path(@most_liked.user) %></div>
+          <div class="post-author">Created by: <%= link_to @most_liked.user.full_name, user_path(@most_liked.user) %></div>
+          <div class="post-author"><%= @most_liked.likes.count %> likes</div>
           <% if user_signed_in? %>
             <span class="post-actions">
               <% if current_user.liked.include?(@most_liked) %>
-                <%= link_to "Unlike", unlike_post_path(@most_liked), method: :post %>
+                <%= link_to '<i class="fa fa-thumbs-down"></i> Unlike'.html_safe, unlike_post_path(@most_liked), method: :post %>
               <% else %>
-                <%= link_to "Like", like_post_path(@most_liked), method: :post %>
+                <%= link_to '<i class="fa fa-thumbs-up"></i> Like'.html_safe, like_post_path(@most_liked), method: :post %>
               <% end %>
             </span>
-            <span><%= link_to "Comment", new_comment_path(:post_id => @most_liked) %></span>
+            <span><%= link_to '<i class="fa fa-comment"></i> Comment'.html_safe, new_comment_path(:post_id => @most_liked) %></span>
           <% end %>
         </div>
       </div>

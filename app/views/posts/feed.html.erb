@@ -14,27 +14,32 @@
                   </div>
                   <div class="col-xs-4 post-info">
                     <strong><%= link_to post.title, post_path(post) %></strong>
-                    <p><%= time_ago_in_words(post.created_at) %> ago</p>
+                    <p><%= time_ago_in_words(post.created_at) %> ago * <i class="fa fa-globe"></i></p>
                   </div>
                 </div>
                 <div class="post-body"><%= post.description %></div>
                 <div class="post-author">Created by: <%= link_to post.user.email, user_path(post.user) %></div>
+                <div class="post-author"><%= post.likes.count %> likes</div>
                 <span class="post-actions">
                 <% if current_user.liked.include?(post) %>
-                  <%= link_to "Unlike", unlike_post_path(post), method: :post %>
+                  <%= link_to '<i class="fa fa-thumbs-down"></i> Unlike'.html_safe, unlike_post_path(post), method: :post %>
                 <% else %>
-                  <%= link_to "Like", like_post_path(post), method: :post %>
+                  <%= link_to '<i class="fa fa-thumbs-up"></i> Like'.html_safe, like_post_path(post), method: :post %>
                 <% end %>
                 </span>
-                <span><%= link_to "Comment", new_comment_path(:post_id => post) %></span>
+                <span><%= link_to '<i class="fa fa-comment"></i> Comment'.html_safe, new_comment_path(:post_id => post) %></span>
               </div>
             <% end %>
           <% end %>
           <% if temp == false %>
-            <p>The users your following haven't made any posts</p>
+            <div class="posts shadow-lg">
+              The users your following haven't made any posts
+            </div>
           <% end %>
         <% else %>
-          <p>You aren't following anyone</p>
+          <div class="posts shadow-lg">
+            You aren't following anyone
+          </div>
         <% end %>
       </div>
     </div>
