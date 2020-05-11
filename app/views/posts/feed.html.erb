@@ -1,28 +1,42 @@
 <div class="container">
   <div class="row">
     <div class="col-md-8 col-12">
-      <h1>Feed</h1>
-      <% if current_user.followings.count > 0 %>
-        <% temp = false %>
-        <% @posts.each do |post| %>
-          <% if current_user.followings.include?(post.user) %>
-            <% temp = true %>
-            <div class="card">
-              <div class="card-body">
-                <strong><%= link_to post.title, post_path(post) %></strong>
-                <p><%= time_ago_in_words(post.created_at) %></p>
-                <p><%= post.description %></p>
-                Created by: <%= link_to post.user.email, user_path(post.user) %>
+      <div class="header shadow-lg"><h1 class="text-center">Feed</h1>
+        <% if current_user.followings.count > 0 %>
+          <% temp = false %>
+          <% @posts.each do |post| %>
+            <% if current_user.followings.include?(post.user) %>
+              <% temp = true %>
+              <div class="posts shadow-lg">
+                <div class="row post-header">
+                  <div class="col-xs-4">
+                    <%= link_to image_tag(post.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(post.user) %>
+                  </div>
+                  <div class="col-xs-4 post-info">
+                    <strong><%= link_to post.title, post_path(post) %></strong>
+                    <p><%= time_ago_in_words(post.created_at) %> ago</p>
+                  </div>
+                </div>
+                <div class="post-body"><%= post.description %></div>
+                <div class="post-author">Created by: <%= link_to post.user.email, user_path(post.user) %></div>
+                <span class="post-actions">
+                <% if current_user.liked.include?(post) %>
+                  <%= link_to "Unlike", unlike_post_path(post), method: :post %>
+                <% else %>
+                  <%= link_to "Like", like_post_path(post), method: :post %>
+                <% end %>
+                </span>
+                <span><%= link_to "Comment", new_comment_path(:post_id => post) %></span>
               </div>
-            </div>
+            <% end %>
           <% end %>
+          <% if temp == false %>
+            <p>The users your following haven't made any posts</p>
+          <% end %>
+        <% else %>
+          <p>You aren't following anyone</p>
         <% end %>
-        <% if temp == false %>
-          <p>The users your following haven't made any posts</p>
-        <% end %>
-      <% else %>
-        <p>You aren't following anyone</p>
-      <% end %>
+      </div>
     </div>
   </div>
 </div>
