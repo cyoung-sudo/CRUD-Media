@@ -1,3 +1,15 @@
-<h1>Edit Post</h1>
+<%= render 'shared/errors', obj: @post %>
 
-<%= render 'posts/form' %>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="container form">
+    <div class="row">
+      <div class="col-12">
+        <div class="header shadow-lg"><h2 class="text-center">Edit post</h2>
+          <div class="posts shadow-lg">
+            <%= render 'posts/form' %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
