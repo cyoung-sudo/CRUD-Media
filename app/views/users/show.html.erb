@@ -16,14 +16,7 @@
     </div>
     <div class="col-md-8 col-12">
       <div class="header shadow-lg"><h2 class="text-center"><%= @user.first_name %>'s Posts</h2>
-        <% @posts.each do |post| %>
-          <div class="posts shadow-lg">
-            <strong><%= post.title %></strong>
-            <%= post.description %>
-            <%= post.user.email %>
-            <%= link_to "View", post_path(post) %>
-          </div>
-        <% end %>
+        <%= render 'posts/list', obj: @posts %>
       </div>
     </div>
   </div>
