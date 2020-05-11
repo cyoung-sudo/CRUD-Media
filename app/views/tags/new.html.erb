@@ -1,11 +1,21 @@
 <%= render 'shared/errors', obj: @tag %>
 
-<%= form_for(@tag, url: tags_path(:post_id => params[:post_id])) do |f| %>
-  <div>
-    <%= f.label :content %>
-    <%= f.text_field :content %>
+<div class="d-flex justify-content-center align-items-center min-vh-100">
+  <div class="container form">
+    <div class="row">
+      <div class="col-12">
+        <div class="header shadow-lg"><h2 class="text-center">Create tag</h2>
+          <div class="sections shadow-lg">
+            <%= form_for(@tag, url: tags_path(:post_id => params[:post_id])) do |f| %>
+              <div class="form-group">
+                <%= f.label :content %>
+                <%= f.text_field :content, class: "form-control" %>
+              </div>
+              <%= f.submit class: "btn btn-primary" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
-  <div>
-    <%= f.submit %>
-  </div>
-<% end %>
+</div>
