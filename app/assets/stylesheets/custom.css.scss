@@ -49,12 +49,12 @@ footer {
 	max-width: 500px;
 }
 
-.pop {
-	padding-top: 10px;
-}
-
 .home {
 	background: linear-gradient(to bottom, rgba(92, 77, 66, 0.8) 0%, rgba(92, 77, 66, 0.8) 100%), url(home.jpg);
 	background-size: cover;
 	color: white;
+}
+
+.alert {
+	margin: 0px;
 }
