@@ -82,6 +82,10 @@ footer {
     border-color: seagreen;
 }
 
+.btn:hover {
+	font-size: 110%;
+}
+
 .badge-custom {
 	color: white;
     background-color: seagreen;
@@ -91,8 +95,19 @@ footer {
 	color: white;
 }
 
+.badge-link-custom:hover {
+	color: white;
+	font-size: 125%;
+}
+
 .link-custom {
 	color: seagreen;
+}
+
+.link-custom:hover {
+	color: seagreen;
+	font-size: 110%;
+	text-decoration: none;
 }
 
 .font-custom {
