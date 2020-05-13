@@ -24,6 +24,11 @@ footer {
 	background-color: white;
 }
 
+.header h2 {
+	font-weight: 700;
+	font-style: italic;
+}
+
 .sections {
 	margin: 20px 0px;
 	padding: 20px;
@@ -88,4 +93,9 @@ footer {
 
 .link-custom {
 	color: seagreen;
+}
+
+.font-custom {
+	font-weight: 700;
+	font-style: italic;
 }
