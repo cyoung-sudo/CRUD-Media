@@ -14,24 +14,24 @@
               <%= link_to image_tag(@most_liked.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(@most_liked.user) %>
             </div>
             <div class="col-xs-4 section-info">
-              <div><strong><%= link_to @most_liked.user.full_name, user_path(@most_liked.user) %></strong></div>
+              <div><strong><%= link_to @most_liked.user.full_name, user_path(@most_liked.user), class: "link-custom" %></strong></div>
               <div><%= time_ago_in_words(@most_liked.created_at) %> ago * <i class="fa fa-globe"></i></div>
             </div>
           </div>
 
-          <h4><%= link_to @most_liked.title, post_path(@most_liked) %></h4>
+          <h4><%= link_to @most_liked.title, post_path(@most_liked), class: "link-custom" %></h4>
           <div class="custom-spacing"><%= @most_liked.description %></div>
           <hr>
           <div class="custom-spacing"><%= @most_liked.likes.count %> likes</div>
           <% if user_signed_in? %>
             <span class="section-actions">
               <% if current_user.liked.include?(@most_liked) %>
-                <%= link_to '<i class="fa fa-thumbs-up"></i> Unlike'.html_safe, unlike_post_path(@most_liked), method: :post %>
+                <%= link_to '<i class="fa fa-thumbs-up"></i> Unlike'.html_safe, unlike_post_path(@most_liked), method: :post, class: "link-custom" %>
               <% else %>
-                <%= link_to '<i class="fa fa-thumbs-o-up"></i> Like'.html_safe, like_post_path(@most_liked), method: :post %>
+                <%= link_to '<i class="fa fa-thumbs-o-up"></i> Like'.html_safe, like_post_path(@most_liked), method: :post, class: "link-custom" %>
               <% end %>
             </span>
-            <span><%= link_to '<i class="fa fa-comment"></i> Comment'.html_safe, new_comment_path(:post_id => @most_liked) %></span>
+            <span><%= link_to '<i class="fa fa-comment"></i> Comment'.html_safe, new_comment_path(:post_id => @most_liked), class: "link-custom" %></span>
           <% end %>
         </div>
       </div>

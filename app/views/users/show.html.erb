@@ -9,9 +9,9 @@
         <div class="custom-spacing"><%= @user.followers.count %> followers</div>
         <% if current_user != @user %>
           <% if current_user.followings.include?(@user) %>
-            <%= link_to '<i class="fa fa-user-times"></i> Unfollow'.html_safe, unfollow_user_path(@user), method: :post %>
+            <%= link_to '<i class="fa fa-user-times"></i> Unfollow'.html_safe, unfollow_user_path(@user), method: :post, class: "link-custom" %>
           <% else %>
-            <%= link_to '<i class="fa fa-user-plus"></i> Follow'.html_safe, follow_user_path(@user), method: :post %>
+            <%= link_to '<i class="fa fa-user-plus"></i> Follow'.html_safe, follow_user_path(@user), method: :post, class: "link-custom" %>
           <% end %>
         <% end %>
       </div>

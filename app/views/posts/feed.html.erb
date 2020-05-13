@@ -13,22 +13,22 @@
                     <%= link_to image_tag(post.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(post.user) %>
                   </div>
                   <div class="col-xs-4 section-info">
-                    <div><strong><%= link_to post.user.full_name, user_path(post.user) %></strong></div>
+                    <div><strong><%= link_to post.user.full_name, user_path(post.user), class: "link-custom" %></strong></div>
                     <div><%= time_ago_in_words(post.created_at) %> ago * <i class="fa fa-globe"></i></div>
                   </div>
                 </div>
-                <h4><%= link_to post.title, post_path(post) %></h4>
+                <h4><%= link_to post.title, post_path(post), class: "link-custom" %></h4>
                 <div class="custom-spacing"><%= post.description %></div>
                 <hr>
                 <div class="custom-spacing"><%= post.likes.count %> likes</div>
                 <span class="section-actions">
                 <% if current_user.liked.include?(post) %>
-                  <%= link_to '<i class="fa fa-thumbs-up"></i> Unlike'.html_safe, unlike_post_path(post), method: :post %>
+                  <%= link_to '<i class="fa fa-thumbs-up"></i> Unlike'.html_safe, unlike_post_path(post), method: :post, class: "link-custom" %>
                 <% else %>
-                  <%= link_to '<i class="fa fa-thumbs-o-up"></i> Like'.html_safe, like_post_path(post), method: :post %>
+                  <%= link_to '<i class="fa fa-thumbs-o-up"></i> Like'.html_safe, like_post_path(post), method: :post, class: "link-custom" %>
                 <% end %>
                 </span>
-                <span><%= link_to '<i class="fa fa-comment"></i> Comment'.html_safe, new_comment_path(:post_id => post) %></span>
+                <span><%= link_to '<i class="fa fa-comment"></i> Comment'.html_safe, new_comment_path(:post_id => post), class: "link-custom" %></span>
               </div>
             <% end %>
           <% end %>
