@@ -21,7 +21,7 @@
           <hr>
           <div class="custom-spacing">
             <% @post.tags.each do |tag| %>
-              <span class="badge badge-secondary section-actions"><%= tag.content %>
+              <span class="badge badge-custom section-actions"><%= tag.content %>
                 <% if current_user == @post.user %>
                   <%= link_to '<i class="fa fa-trash"></i>'.html_safe, tag_path(tag), method: :delete, data: {confirm: "Are you sure you want to delete this tag?"} %>
                 <% end %>

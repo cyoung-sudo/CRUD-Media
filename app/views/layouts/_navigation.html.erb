@@ -36,14 +36,14 @@
       <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item">
-            <%= link_to '<i class="fa fa-sign-out"></i> Log out'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
+            <%= link_to '<i class="fa fa-sign-out"></i> Log out'.html_safe, destroy_user_session_path, method: :delete, class: "btn btn-custom" %>
           </li>
         <% else %>
           <li>
-            <%= link_to '<i class="fa fa-sign-in"></i> Log in'.html_safe, user_session_path, class: " btn btn-success" %>
+            <%= link_to '<i class="fa fa-sign-in"></i> Log in'.html_safe, user_session_path, class: " btn btn-custom" %>
           </li>
           <li>
-            <%= link_to '<i class="fa fa-clipboard"></i> Sign up'.html_safe, new_user_registration_path, class: " btn btn-primary ml-2" %>
+            <%= link_to '<i class="fa fa-clipboard"></i> Sign up'.html_safe, new_user_registration_path, class: " btn btn-custom ml-2" %>
           </li>
         <% end %>
       </ul>
