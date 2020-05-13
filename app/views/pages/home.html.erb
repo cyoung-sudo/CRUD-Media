@@ -1,1 +1,17 @@
-<h1>Home</h1>
+<div class="d-flex justify-content-center align-items-center home min-vh-100">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="text-center">CRUD-Media</h1>
+        <p class="text-center">Post updates, follow friends, and much more!!!<br>Join our community today!!!</p>
+        <div class="text-center">
+          <% if user_signed_in? %>
+            <%= link_to "View posts", posts_path, class: "btn btn-primary" %>
+          <% else %>
+            <%= link_to "Sign up", new_user_registration_path, class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
