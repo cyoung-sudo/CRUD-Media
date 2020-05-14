@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-8 col-12">
       <div class="header shadow-lg"><h2 class="text-center">Users</h2>
-        
+
         <% if @users.count > 0 %>
           <% @users.each do |user| %>
             <div class="sections shadow-lg">
@@ -35,7 +35,7 @@
       </div>
     </div>
 
-    <% if @most_liked != nil %>
+    <% if @most_followed != nil %>
       <div class="col-md-4 col-12">
         <div class="header shadow-lg"><h2 class="text-center">Most Followed</h2>
           <div class="sections shadow-lg">
