@@ -9,10 +9,12 @@ class User < ApplicationRecord
 
   has_many :posts, dependent: :destroy
   has_many :comments, dependent: :destroy
+
   has_many :received_follows, foreign_key: :followee_id, class_name: "Follow"
-  has_many :followers, through: :received_follows, source: :follower
+  has_many :followers, through: :received_follows, source: :follower, dependent: :destroy
   has_many :given_follows, foreign_key: :follower_id, class_name: "Follow"
   has_many :followings, through: :given_follows, source: :followee, dependent: :destroy
+  
   has_many :given_likes, foreign_key: :user_id, class_name: "Like"
   has_many :liked, through: :given_likes, source: :post, dependent: :destroy
   has_attached_file :avatar, styles: { medium: "300x300#", thumb: "100x100#" }, default_url: "missing_:style.png"
