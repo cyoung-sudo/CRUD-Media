@@ -121,6 +121,14 @@ footer {
 	outline: none;
 }
 
+.dropdown-menu {
+	border: none;
+}
+
+.dropdown-item:hover {
+	font-size: 110%;
+}
+
 .footer-link {
 	color: rgba(255, 255, 255, 0.5);
 }
