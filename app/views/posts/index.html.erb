@@ -18,7 +18,7 @@
           <div class="sections shadow-lg">
             <div class="row section-header">
               <div class="col-xs-4">
-                <%= link_to image_tag(@most_liked.user.avatar.url(:thumb), class: "img-fluid img-thumbnail"), user_path(@most_liked.user) %>
+                <%= link_to image_tag(@most_liked.user.avatar.url(:thumb), onerror: "this.src='/assets/missing_thumb.png'", class: "img-fluid img-thumbnail"), user_path(@most_liked.user) %>
               </div>
               <div class="col-xs-4 section-info">
                 <div><strong><%= link_to @most_liked.user.full_name, user_path(@most_liked.user), class: "link-custom" %></strong></div>
