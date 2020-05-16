@@ -1,24 +1,25 @@
-# README
+# CRUD Media
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Preview:
+![](app/assets/images/preview.png)
 
-Things you may want to cover:
+## Heroku link:
+https://crud-media.herokuapp.com/
 
-* Ruby version
+## Features:
 
-* System dependencies
+* Create user accounts
 
-* Configuration
+* Create, edit, and delete posts
 
-* Database creation
+* Comment on and like posts
 
-* Database initialization
+* Add tags to posts
 
-* How to run the test suite
+## Information:
 
-* Services (job queues, cache servers, search engines, etc.)
+* Ruby version: 2.6.3
 
-* Deployment instructions
+* Rails version: 6.0.3
 
-* ...
+* Bootstrap version: 4.4.1
