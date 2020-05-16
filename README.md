@@ -16,6 +16,8 @@ https://crud-media.herokuapp.com/
 
 * Add tags to posts
 
+* Upload profile pictures (only last 1 day on heroku)
+
 ## Information:
 
 * Ruby version: 2.6.3
